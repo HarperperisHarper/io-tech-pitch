@@ -724,6 +724,24 @@
         .connector.left-to-center {}
         .connector.right-to-center {}
         
+        /* Styles for the new single image container */
+        .image-after-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(30, 58, 138, 0.1));
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 24px;
+            padding: 1rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .image-after-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* This makes the image fill the box without stretching */
+            border-radius: 16px;
+        }
 
     </style>
 </head>
@@ -750,6 +768,8 @@
             </div>
         </div>
 
+
+
         <div class="slide">
             <div class="slide-content">
                 <h2>Our Transformation Journey</h2>
@@ -765,16 +785,14 @@
                         </ul>
                     </div>
                     <div class="arrow-transform">→</div>
-                    <div class="modules-grid">
-                        <div class="module-box" style="--delay: 1">Intelligent Analysis On Product Sales</div>
-                        <div class="module-box" style="--delay: 2">AI-Powered RFQ Engine</div>
-                        <div class="module-box" style="--delay: 3">AI-Driven Prospect Matchmaking</div>
+                    
+                    <div class="image-after-box">
+                        <img src="image (16).png" alt="Modern SaaS platform dashboard">
                     </div>
                 </div>
             </div>
         </div>
-
-
+        
 
 
 
