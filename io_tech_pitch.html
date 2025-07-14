@@ -554,6 +554,160 @@
                 transform: rotate(90deg);
             }
         }
+        
+        /* Updated Data Flow Diagram Styles */
+        /* Updated Data Flow Diagram Styles */
+        .data-flow-diagram {
+            position: relative;
+            /* ✅ Increased size from 400px to 500px to add more space */
+            width: 1050px;
+            height: 650px;
+            margin: 3rem auto 0;
+        }
+
+        .data-flow-diagram-fake {
+            position: relative;
+            /* ✅ Increased size from 400px to 500px to add more space */
+            width: 1200px;
+            height: 650px;
+            margin: 3rem auto 0;
+        }
+               
+        .data-node {
+            position: absolute;
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            border-radius: 10px;
+            padding: 1.25rem;
+            z-index: 2;
+            /* ✅ Adjusted width for the larger container */
+            width: 240px; 
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .data-node h3 {
+            color: #f1f5f9;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .data-node p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #94a3b8;
+            margin: 0; /* Remove default paragraph margins */
+        }
+        .data-node.top {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .data-node.left {
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .data-node.right {
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .data-node .pointer {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: rgba(114, 191, 68, 1);
+            border-radius: 50%;
+            z-index: 3;
+        }
+        
+        .data-node.top .pointer {
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .data-node.left .pointer {
+            right: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .data-node.right .pointer {
+            left: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .process-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 580px;
+            height: 300px;
+            border: 5px dashed #72BF44;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .process-circle-fake {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 350px;
+            border: 2px dashed transparent;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .process-text {
+            color: #f1f5f9;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .process-text.sub {
+            font-size: 1rem;
+            color: #94a3b8;
+            font-weight: normal;
+        }
+        
+        .connection-dot {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: #3b82f6;
+            border-radius: 50%;
+        }
+        
+        /* Position the dot (you might need to fine-tune these) */
+        .process-circle .connection-dot {
+            top: 20px; /* Example position - adjust as needed */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Remove the connector styles */
+        .connector {}
+        .connector.top-to-center {}
+        .connector.left-to-center {}
+        .connector.right-to-center {}
+  
     </style>
 </head>
 <body>
@@ -602,6 +756,121 @@
             </div>
         </div>
 
+        <div class="slide">    
+            <div class="slide-content">
+                <div class="ai-badge">The Core Engine</div>
+                <h2>Data Driven Technology Stack Powered by AI/BI</h2>
+                
+                <div class="data-flow-diagram-fake">
+                    <div class="data-node top">
+                        <h3>Product Data</h3>
+                        <p>IOSpace leverages AI to collect real-time market trends and provide value-added market analysis in raw material markets.</p>
+                       
+                    </div>
+                    <div class="data-node left">
+                        <h3>Seller Data</h3>
+                        <p>Our platform aggregates comprehensive seller profiles, including production capacity, certifications, and historical performance.</p>
+                      
+                    </div>
+                    <div class="data-node right">
+                        <h3>Buyer Data</h3>
+                        <p>We analyze buyer request history, specific ingredient requirements, and purchasing patterns to predict needs and facilitate connections.</p>
+                        
+                    </div>
+                    <div class="process-circle-fake">
+                        <div class="process-text"><h3>Seller System</h3></div>
+                        <div class="process-text sub"><h3>AI/BI Empowered Software Framework</h3></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide">
+            <div class="slide-content">
+                <div class="ai-badge">Visual Overview</div>
+                <h2>Product Data - IO Space</h2>
+                <div style="text-align: center; margin-top: 3rem; position: relative;">
+                    <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.1)); padding: 2rem; border-radius: 24px; display: inline-block;">
+                        <img src="image (12).png" 
+                             alt="Description of your image" 
+                             style="max-width: 100%; 
+                                    max-height: 450px; 
+                                    height: auto; 
+                                    border-radius: 1px; 
+                                    box-shadow: 0 10px 10px rgba(59, 130, 246, 0.3);
+                                    border: 1px solid rgba(59, 130, 246, 0.2);">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide">
+            <div class="slide-content">
+                <div class="ai-badge">Visual Overview</div>
+                <h2>Seller Data - Seller Score</h2>
+                <div style="text-align: center; margin-top: 3rem; position: relative;">
+                    <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.1)); padding: 2rem; border-radius: 24px; display: inline-block;">
+                        <img src="seller score.png" 
+                             alt="Description of your image" 
+                             style="max-width: 100%; 
+                                    max-height: 450px; 
+                                    height: auto; 
+                                    border-radius: 1px; 
+                                    box-shadow: 0 10px 10px rgba(59, 130, 246, 0.3);
+                                    border: 1px solid rgba(59, 130, 246, 0.2);">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide">
+            <div class="slide-content">
+                <div class="ai-badge">Visual Overview</div>
+                <h2>Buyer Data - Buyer Analytics</h2>
+                <div style="text-align: center; margin-top: 3rem; position: relative;">
+                    <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.1)); padding: 2rem; border-radius: 24px; display: inline-block;">
+                        <img src="analytics.png" 
+                             alt="Description of your image" 
+                             style="max-width: 100%; 
+                                    max-height: 450px; 
+                                    height: auto; 
+                                    border-radius: 1px; 
+                                    box-shadow: 0 10px 10px rgba(59, 130, 246, 0.3);
+                                    border: 1px solid rgba(59, 130, 246, 0.2);">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">    
+            <div class="slide-content">
+                <div class="ai-badge">The Core Engine</div>
+                <h2>IO AI-Powered Ecosystem</h2>
+        
+                <div class="data-flow-diagram">
+                    <div class="data-node top">
+                        <h3>Product Data</h3>
+                        <p>IOSpace leverages AI to collect real-time market trends and provide value-added market analysis in raw material markets.</p>
+                        <div class="pointer"></div>
+                    </div>
+                    <div class="data-node left">
+                        <h3>Seller Data</h3>
+                        <p>Our platform aggregates comprehensive seller profiles, including production capacity, certifications, and historical performance.</p>
+                        <div class="pointer"></div>
+                    </div>
+                    <div class="data-node right">
+                        <h3>Buyer Data</h3>
+                        <p>We analyze buyer request history, specific ingredient requirements, and purchasing patterns to predict needs and facilitate connections.</p>
+                        <div class="pointer"></div>
+                    </div>
+                    <div class="process-circle">
+                        <div class="process-text"><h3>AI-Powered RFQ Engine</h3></div>
+                        <div class="process-text"><h3>AI-Driven Prospect Matchmaking</h3></div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+        
         <div class="slide">
             <div class="slide-content">
                 <div class="ai-badge">Module Spotlight</div>
@@ -728,25 +997,6 @@
 
         <div class="slide">
             <div class="slide-content">
-                <div class="ai-badge">Visual Overview</div>
-                <h2>Business Intelligence Initiatives Demo</h2>
-                <div style="text-align: center; margin-top: 3rem; position: relative;">
-                    <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.1)); padding: 2rem; border-radius: 24px; display: inline-block;">
-                        <img src="analytics.png" 
-                             alt="Description of your image" 
-                             style="max-width: 100%; 
-                                    max-height: 450px; 
-                                    height: auto; 
-                                    border-radius: 1px; 
-                                    box-shadow: 0 10px 10px rgba(59, 130, 246, 0.3);
-                                    border: 1px solid rgba(59, 130, 246, 0.2);">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="slide">
-            <div class="slide-content">
                 <h2>Massive Market Opportunity</h2>
                 <p>The B2B SaaS and supply chain tech market is exploding</p>
                 <div class="metrics-container">
@@ -812,6 +1062,36 @@
         <div class="slide">
             <div class="slide-content">
                 <h1>Join the <span style="color: #72BF44; background: none; -webkit-text-fill-color: initial;">IO</span> Business Revolution</h1>
+            </div>
+        </div>
+
+        
+        <div class="slide">    
+            <div class="slide-content">
+                <div class="ai-badge">The Core Engine</div>
+                <h2>Data Driven Technology Stack Powered by AI/BI</h2>
+                
+                <div class="data-flow-diagram-fake">
+                    <div class="data-node top">
+                        <h3>Product Data</h3>
+                        <p>IOSpace leverages AI to collect real-time market trends and provide value-added market analysis in raw material markets.</p>
+                       
+                    </div>
+                    <div class="data-node left">
+                        <h3>Seller Data</h3>
+                        <p>Our platform aggregates comprehensive seller profiles, including production capacity, certifications, and historical performance.</p>
+                      
+                    </div>
+                    <div class="data-node right">
+                        <h3>Buyer Data</h3>
+                        <p>We analyze buyer request history, specific ingredient requirements, and purchasing patterns to predict needs and facilitate connections.</p>
+                        
+                    </div>
+                    <div class="process-circle-fake">
+                        <div class="process-text"><h3>Seller System</h3></div>
+                        <div class="process-text sub"><h3>AI/BI Empowered Software Framework</h3></div>
+                    </div>
+                </div>
             </div>
         </div>
 
