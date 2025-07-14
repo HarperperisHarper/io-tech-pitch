@@ -576,7 +576,7 @@
         .data-flow-diagram {
             position: relative;
             /* ✅ Increased size from 400px to 500px to add more space */
-            width: 1050px;
+            width: 1240px;
             height: 650px;
             margin: 3rem auto 0;
         }
@@ -584,7 +584,7 @@
         .data-flow-diagram-fake {
             position: relative;
             /* ✅ Increased size from 400px to 500px to add more space */
-            width: 1200px;
+            width: 1400px;
             height: 650px;
             margin: 3rem auto 0;
         }
@@ -597,7 +597,7 @@
             padding: 1.25rem;
             z-index: 2;
             /* ✅ Adjusted width for the larger container */
-            width: 240px; 
+            width: 330px; 
             text-align: center;
             backdrop-filter: blur(5px);
         }
@@ -605,11 +605,11 @@
         .data-node h3 {
             color: #f1f5f9;
             margin-bottom: 0.5rem;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
         }
         
         .data-node p {
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             line-height: 1.5;
             color: #94a3b8;
             margin: 0; /* Remove default paragraph margins */
@@ -723,7 +723,55 @@
         .connector.top-to-center {}
         .connector.left-to-center {}
         .connector.right-to-center {}
-  
+        
+        /* Styles for the Two-Image Layout */
+        .two-image-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Creates two equal columns */
+            gap: 2.5rem; /* Space between the columns */
+            margin-top: 3rem;
+            align-items: start; /* Aligns items to the top */
+        }
+        
+        .image-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(30, 58, 138, 0.1));
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 24px;
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .image-box img {
+            width: 100%;
+            height: 300px; /* Gives the images a uniform height */
+            object-fit: cover; /* Ensures images fill the space without distortion */
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .image-box h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.5rem;
+            color: #f1f5f9;
+        }
+        
+        .image-box p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #94a3b8;
+            margin: 0;
+        }
+        
+        /* New layout for the slide with the carousel */
+        .transformation-visual-carousel {
+            display: grid;
+            /* This gives the left box 35% of the space and the carousel the rest */
+            grid-template-columns: 35% auto 1fr;
+            align-items: center;
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
     </style>
 </head>
 <body>
@@ -772,6 +820,52 @@
             </div>
         </div>
 
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Our Transformation Journey</h2>
+                <p>Elevating B2B commerce with a multi-tenant SaaS platform that enables businesses to host their own dynamic, industry-specific ecosystems.Our solution provides foundational functionalities and deep customization to create a robust, flexible, and interconnected commercial environment</p>
+                <div class="transformation-visual-carousel">
+                    <div class="monolith-box">
+                        <h3>Traditional ERP</h3>
+                        <ul>
+                            <li>Not Industry-relevant</li>
+                            <li>Low Customization</li>
+                            <li>Slow Turnaround Time on New Technology</li>
+                        </ul>
+                    </div>
+                    <div class="arrow-transform">→</div>
+                    <div class="image-carousel-container" style="margin-top: 3rem; position: relative; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    <div class="carousel-wrapper" style="position: relative; height: 450px; overflow: hidden; border-radius: 20px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.1)); padding: 20px;">
+                        <div class="carousel-image active" data-index="0" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.5s ease;">
+                            <img src="image (16).png" alt="Image 1" style="max-width: 100%; max-height: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);">
+                        </div>
+                        <div class="carousel-image" data-index="1" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.5s ease;">
+                            <img src="image (17).png" alt="Image 2" style="max-width: 100%; max-height: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);">
+                        </div>
+                        <div class="carousel-image" data-index="2" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.5s ease;">
+                            <img src="image (18).png" alt="Image 3" style="max-width: 100%; max-height: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);">
+                        </div>
+                        <div class="carousel-image" data-index="2" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.5s ease;">
+                            <img src="image (19).png" alt="Image 3" style="max-width: 100%; max-height: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);">
+                        </div>
+                        
+                        <button class="carousel-nav carousel-prev" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(59, 130, 246, 0.8); border: none; color: white; padding: 15px 20px; border-radius: 50%; font-size: 20px; transition: all 0.3s ease; z-index: 10;">‹</button>
+                        <button class="carousel-nav carousel-next" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(59, 130, 246, 0.8); border: none; color: white; padding: 15px 20px; border-radius: 50%; font-size: 20px; transition: all 0.3s ease; z-index: 10;">›</button>
+                    </div>
+                    
+                    <div class="carousel-dots" style="text-align: center; margin-top: 20px;">
+                        <span class="dot active" style="height: 12px; width: 12px; margin: 0 5px; background-color: #3b82f6; border-radius: 50%; display: inline-block; transition: all 0.3s ease;"></span>
+                        <span class="dot" style="height: 12px; width: 12px; margin: 0 5px; background-color: rgba(59, 130, 246, 0.3); border-radius: 50%; display: inline-block; transition: all 0.3s ease;"></span>
+                        <span class="dot" style="height: 12px; width: 12px; margin: 0 5px; background-color: rgba(59, 130, 246, 0.3); border-radius: 50%; display: inline-block; transition: all 0.3s ease;"></span>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
         <div class="slide">    
             <div class="slide-content">
                 <div class="ai-badge">The Core Engine</div>
@@ -780,17 +874,17 @@
                 <div class="data-flow-diagram-fake">
                     <div class="data-node top">
                         <h3>Product Data</h3>
-                        <p>IOSpace leverages AI to collect real-time market trends and provide value-added market analysis in raw material markets.</p>
+                        <p><span style="color: #72BF44; background: none; -webkit-text-fill-color: initial;">IOSpace</span> leverages AI to collect real-time market trends and provide value-added market analysis in raw material markets.</p>
                        
                     </div>
                     <div class="data-node left">
                         <h3>Seller Data</h3>
-                        <p>Our platform aggregates comprehensive seller profiles, including production capacity, certifications, and historical performance.</p>
+                        <p><span style="color: #72BF44; background: none; -webkit-text-fill-color: initial;">Seller Scoring System</span> analyzes inventory index, shipping performance, and product compliance to help sellers identify opportunities to grow sales and reduce costs</p>
                       
                     </div>
                     <div class="data-node right">
                         <h3>Buyer Data</h3>
-                        <p>We analyze buyer request history, specific ingredient requirements, and purchasing patterns to predict needs and facilitate connections.</p>
+                        <p><span style="color: #72BF44; background: none; -webkit-text-fill-color: initial;">Comprehensive Analytics Board</span> informs customer and purchase behavior which enables targeted product marketing</p>
                         
                     </div>
                     <div class="process-circle-fake">
@@ -805,6 +899,7 @@
             <div class="slide-content">
                 <div class="ai-badge">Visual Overview</div>
                 <h2>Product Data - IO Space</h2>
+                <p>IOSpace leverages AI to collect real-time market trends and provide value-added market analysis in raw material markets.</p>
                 <div style="text-align: center; margin-top: 3rem; position: relative;">
                     <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.1)); padding: 2rem; border-radius: 24px; display: inline-block;">
                         <img src="image (12).png" 
@@ -820,43 +915,40 @@
             </div>
         </div>
         
+
+        
         <div class="slide">
             <div class="slide-content">
-                <div class="ai-badge">Visual Overview</div>
                 <h2>Seller Data - Seller Score</h2>
-                <div style="text-align: center; margin-top: 3rem; position: relative;">
-                    <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.1)); padding: 2rem; border-radius: 24px; display: inline-block;">
-                        <img src="seller score.png" 
-                             alt="Description of your image" 
-                             style="max-width: 100%; 
-                                    max-height: 450px; 
-                                    height: auto; 
-                                    border-radius: 1px; 
-                                    box-shadow: 0 10px 10px rgba(59, 130, 246, 0.3);
-                                    border: 1px solid rgba(59, 130, 246, 0.2);">
-                    </div>
+                <p>Seller Scoring System analyzes inventory index, shipping performance, and product compliance to help sellers identify opportunities to grow sales and reduce costs</p>
+                
+                <div class="two-image-container">
+                    <div class="image-box">
+                        <img src="image (13).png" alt="A buyer inspecting food ingredients in a lab setting">
+                        </div>
+                    <div class="image-box">
+                        <img src="image (14).png" alt="A seller working in a modern processing facility">
+                        </div>
                 </div>
             </div>
         </div>
         
         <div class="slide">
             <div class="slide-content">
-                <div class="ai-badge">Visual Overview</div>
                 <h2>Buyer Data - Buyer Analytics</h2>
-                <div style="text-align: center; margin-top: 3rem; position: relative;">
-                    <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.1)); padding: 2rem; border-radius: 24px; display: inline-block;">
-                        <img src="analytics.png" 
-                             alt="Description of your image" 
-                             style="max-width: 100%; 
-                                    max-height: 450px; 
-                                    height: auto; 
-                                    border-radius: 1px; 
-                                    box-shadow: 0 10px 10px rgba(59, 130, 246, 0.3);
-                                    border: 1px solid rgba(59, 130, 246, 0.2);">
-                    </div>
+                <p>Comprehensive Analytics Board informs customer and purchase behavior which enables targeted product marketing</p>
+               
+                <div class="two-image-container">
+                    <div class="image-box">
+                        <img src="SS3_Product Details.png" alt="A buyer inspecting food ingredients in a lab setting">
+                        </div>
+                    <div class="image-box">
+                        <img src="web_traffic.png" alt="A seller working in a modern processing facility">
+                        </div>
                 </div>
             </div>
         </div>
+        
 
         <div class="slide">    
             <div class="slide-content">
@@ -866,17 +958,17 @@
                 <div class="data-flow-diagram">
                     <div class="data-node top">
                         <h3>Product Data</h3>
-                        <p>IOSpace leverages AI to collect real-time market trends and provide value-added market analysis in raw material markets.</p>
+                        <p><span style="color: #72BF44; background: none; -webkit-text-fill-color: initial;">IOSpace</span> leverages AI to collect real-time market trends and provide value-added market analysis in raw material markets.</p>
                         <div class="pointer"></div>
                     </div>
                     <div class="data-node left">
                         <h3>Seller Data</h3>
-                        <p>Our platform aggregates comprehensive seller profiles, including production capacity, certifications, and historical performance.</p>
+                        <p><span style="color: #72BF44; background: none; -webkit-text-fill-color: initial;">Seller Scoring System</span> analyzes inventory index, shipping performance, and product compliance to help sellers identify opportunities to grow sales and reduce costs</p>
                         <div class="pointer"></div>
                     </div>
                     <div class="data-node right">
                         <h3>Buyer Data</h3>
-                        <p>We analyze buyer request history, specific ingredient requirements, and purchasing patterns to predict needs and facilitate connections.</p>
+                        <p><span style="color: #72BF44; background: none; -webkit-text-fill-color: initial;">Comprehensive Analytics Board</span> informs customer and purchase behavior which enables targeted product marketing</p>
                         <div class="pointer"></div>
                     </div>
                     <div class="process-circle">
@@ -973,7 +1065,7 @@
                 <h2>AI-Driven Prospect Matchmaking Demo</h2>
                 <div style="text-align: center; margin-top: 3rem; position: relative;">
                     <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.1)); padding: 2rem; border-radius: 24px; display: inline-block;">
-                        <img src="image (11).png" 
+                        <img src="image (15).png" 
                              alt="Description of your image" 
                              style="max-width: 100%; 
                                     max-height: 450px; 
@@ -986,29 +1078,6 @@
             </div>
         </div>
 
-        <div class="slide">
-            <div class="slide-content">
-                <div class="ai-badge">Module Spotlight</div>
-                <h2>Business Intelligence Initiatives</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3>Product Demand</h3>
-                        <p>ML algorithms predict future demand based on historical transactions and real-time consumer market trend</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔄</div>
-                        <h3>Cost Optimization</h3>
-                        <p>Reduce carrying costs through inventory control</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">💰</div>
-                        <h3>Strategic Tiered Pricing</h3>
-                        <p>Intelligent predictive models based on market trend and competitors activity</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="slide">
             <div class="slide-content">
@@ -1052,7 +1121,6 @@
                     <div class="feature-card">
                         <div class="feature-icon">📈</div>
                         <h3>Trusted by Leading Sellers</h3>
-                        <p>Average 300% ROI within 6 months</p>
                         <p>High user experience satisfaction</p>
                     </div>
                 </div>
