@@ -252,7 +252,15 @@
             gap: 2rem;
             margin-top: 3rem;
         }
-
+        
+        .metrics-grid {
+            display: grid;
+            /* This creates exactly 3 flexible columns */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
         .metric {
             text-align: center;
             padding: 2.5rem;
@@ -263,6 +271,14 @@
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
+            
+            /* These properties center the content */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        
+            /* ✅ Manually set the height */
+            height: 450px;
         }
 
         .metric:hover {
@@ -998,7 +1014,6 @@
         <div class="slide">
             <div class="slide-content">
                 <h2>Massive Market Opportunity</h2>
-                <p>The B2B SaaS and supply chain tech market is exploding</p>
                 <div class="metrics-container">
                     <div class="metric">
                         <div class="metric-value">$195B</div>
@@ -1022,7 +1037,7 @@
 
         <div class="slide">
             <div class="slide-content">
-                <h2>Why Sellers Choose Our AI Modules</h2>
+                <h2>Why Sellers Choose Our AI Modules - P1</h2>
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">🏗️</div>
@@ -1042,7 +1057,13 @@
                         <p>High user experience satisfaction</p>
                     </div>
                 </div>
-                <div class="metrics-container" style="margin-top: 3rem;">
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Why Sellers Choose Our AI Modules - P2</h2>
+                <div class="metrics-grid">
                     <div class="metric">
                         <div class="metric-value">70K+</div>
                         <p>Active Buyer Users</p>
@@ -1059,41 +1080,14 @@
             </div>
         </div>
 
+
+
         <div class="slide">
             <div class="slide-content">
                 <h1>Join the <span style="color: #72BF44; background: none; -webkit-text-fill-color: initial;">IO</span> Business Revolution</h1>
             </div>
         </div>
 
-        
-        <div class="slide">    
-            <div class="slide-content">
-                <div class="ai-badge">The Core Engine</div>
-                <h2>Data Driven Technology Stack Powered by AI/BI</h2>
-                
-                <div class="data-flow-diagram-fake">
-                    <div class="data-node top">
-                        <h3>Product Data</h3>
-                        <p>IOSpace leverages AI to collect real-time market trends and provide value-added market analysis in raw material markets.</p>
-                       
-                    </div>
-                    <div class="data-node left">
-                        <h3>Seller Data</h3>
-                        <p>Our platform aggregates comprehensive seller profiles, including production capacity, certifications, and historical performance.</p>
-                      
-                    </div>
-                    <div class="data-node right">
-                        <h3>Buyer Data</h3>
-                        <p>We analyze buyer request history, specific ingredient requirements, and purchasing patterns to predict needs and facilitate connections.</p>
-                        
-                    </div>
-                    <div class="process-circle-fake">
-                        <div class="process-text"><h3>Seller System</h3></div>
-                        <div class="process-text sub"><h3>AI/BI Empowered Software Framework</h3></div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="navigation">
             <button class="nav-btn" id="prevBtn">← Previous</button>
