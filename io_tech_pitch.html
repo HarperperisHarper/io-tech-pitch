@@ -766,8 +766,8 @@
         /* New layout for the slide with the carousel */
         .transformation-visual-carousel {
             display: grid;
-            /* This gives the left box 35% of the space and the carousel the rest */
-            grid-template-columns: 35% auto 1fr;
+            /* ✅ Changed to give the right side 50% of the space */
+            grid-template-columns: 1fr auto 50%;
             align-items: center;
             gap: 2.5rem;
             margin: 3rem 0;
@@ -800,7 +800,8 @@
         <div class="slide">
             <div class="slide-content">
                 <h2>Our Transformation Journey</h2>
-                <p>From monolithic ERP to modular AI-powered SaaS solutions</p>
+                <p>Elevating B2B commerce with a multi-tenant SaaS platform that enables businesses to host their own dynamic, industry-specific ecosystems.</p>
+                <p>Our solution provides foundational functionalities and deep customization to create a robust, flexible, and interconnected commercial environment.</p>
                 <div class="transformation-visual">
                     <div class="monolith-box">
                         <h3>Traditional ERP</h3>
@@ -820,48 +821,7 @@
             </div>
         </div>
 
-        <div class="slide">
-            <div class="slide-content">
-                <h2>Our Transformation Journey</h2>
-                <p>Elevating B2B commerce with a multi-tenant SaaS platform that enables businesses to host their own dynamic, industry-specific ecosystems.Our solution provides foundational functionalities and deep customization to create a robust, flexible, and interconnected commercial environment</p>
-                <div class="transformation-visual-carousel">
-                    <div class="monolith-box">
-                        <h3>Traditional ERP</h3>
-                        <ul>
-                            <li>Not Industry-relevant</li>
-                            <li>Low Customization</li>
-                            <li>Slow Turnaround Time on New Technology</li>
-                        </ul>
-                    </div>
-                    <div class="arrow-transform">→</div>
-                    <div class="image-carousel-container" style="margin-top: 3rem; position: relative; max-width: 900px; margin-left: auto; margin-right: auto;">
-                    <div class="carousel-wrapper" style="position: relative; height: 450px; overflow: hidden; border-radius: 20px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.1)); padding: 20px;">
-                        <div class="carousel-image active" data-index="0" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.5s ease;">
-                            <img src="image (16).png" alt="Image 1" style="max-width: 100%; max-height: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);">
-                        </div>
-                        <div class="carousel-image" data-index="1" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.5s ease;">
-                            <img src="image (17).png" alt="Image 2" style="max-width: 100%; max-height: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);">
-                        </div>
-                        <div class="carousel-image" data-index="2" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.5s ease;">
-                            <img src="image (18).png" alt="Image 3" style="max-width: 100%; max-height: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);">
-                        </div>
-                        <div class="carousel-image" data-index="2" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.5s ease;">
-                            <img src="image (19).png" alt="Image 3" style="max-width: 100%; max-height: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);">
-                        </div>
-                        
-                        <button class="carousel-nav carousel-prev" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(59, 130, 246, 0.8); border: none; color: white; padding: 15px 20px; border-radius: 50%; font-size: 20px; transition: all 0.3s ease; z-index: 10;">‹</button>
-                        <button class="carousel-nav carousel-next" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(59, 130, 246, 0.8); border: none; color: white; padding: 15px 20px; border-radius: 50%; font-size: 20px; transition: all 0.3s ease; z-index: 10;">›</button>
-                    </div>
-                    
-                    <div class="carousel-dots" style="text-align: center; margin-top: 20px;">
-                        <span class="dot active" style="height: 12px; width: 12px; margin: 0 5px; background-color: #3b82f6; border-radius: 50%; display: inline-block; transition: all 0.3s ease;"></span>
-                        <span class="dot" style="height: 12px; width: 12px; margin: 0 5px; background-color: rgba(59, 130, 246, 0.3); border-radius: 50%; display: inline-block; transition: all 0.3s ease;"></span>
-                        <span class="dot" style="height: 12px; width: 12px; margin: 0 5px; background-color: rgba(59, 130, 246, 0.3); border-radius: 50%; display: inline-block; transition: all 0.3s ease;"></span>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
+
 
 
 
@@ -917,38 +877,64 @@
         
 
         
+
+        
         <div class="slide">
             <div class="slide-content">
+                <div class="ai-badge">Visual Overview</div>
                 <h2>Seller Data - Seller Score</h2>
                 <p>Seller Scoring System analyzes inventory index, shipping performance, and product compliance to help sellers identify opportunities to grow sales and reduce costs</p>
                 
-                <div class="two-image-container">
-                    <div class="image-box">
-                        <img src="image (13).png" alt="A buyer inspecting food ingredients in a lab setting">
+                <div class="image-carousel-container" style="margin-top: 3rem; position: relative; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    <div class="carousel-wrapper" style="position: relative; height: 450px; overflow: hidden; border-radius: 20px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.1)); padding: 20px;">
+                        <div class="carousel-image active" data-index="0" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.5s ease;">
+                            <img src="image (13).png" alt="Image 1" style="max-width: 100%; max-height: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);">
                         </div>
-                    <div class="image-box">
-                        <img src="image (14).png" alt="A seller working in a modern processing facility">
+                        <div class="carousel-image" data-index="1" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.5s ease;">
+                            <img src="image (14).png" alt="Image 2" style="max-width: 100%; max-height: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);">
+                        </div>
+                        
+                        <button class="carousel-nav carousel-prev" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(59, 130, 246, 0.8); border: none; color: white; padding: 15px 20px; border-radius: 50%; font-size: 20px; transition: all 0.3s ease; z-index: 10;">‹</button>
+                        <button class="carousel-nav carousel-next" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(59, 130, 246, 0.8); border: none; color: white; padding: 15px 20px; border-radius: 50%; font-size: 20px; transition: all 0.3s ease; z-index: 10;">›</button>
+                    </div>
+                    
+                    <div class="carousel-dots" style="text-align: center; margin-top: 20px;">
+                        <span class="dot active" style="height: 12px; width: 12px; margin: 0 5px; background-color: #3b82f6; border-radius: 50%; display: inline-block; transition: all 0.3s ease;"></span>
+                        <span class="dot" style="height: 12px; width: 12px; margin: 0 5px; background-color: rgba(59, 130, 246, 0.3); border-radius: 50%; display: inline-block; transition: all 0.3s ease;"></span>
                         </div>
                 </div>
             </div>
         </div>
+        
+
         
         <div class="slide">
             <div class="slide-content">
+                <div class="ai-badge">Visual Overview</div>
                 <h2>Buyer Data - Buyer Analytics</h2>
                 <p>Comprehensive Analytics Board informs customer and purchase behavior which enables targeted product marketing</p>
                
-                <div class="two-image-container">
-                    <div class="image-box">
-                        <img src="SS3_Product Details.png" alt="A buyer inspecting food ingredients in a lab setting">
+                <div class="image-carousel-container" style="margin-top: 3rem; position: relative; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    <div class="carousel-wrapper" style="position: relative; height: 450px; overflow: hidden; border-radius: 20px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.1)); padding: 20px;">
+                        <div class="carousel-image active" data-index="0" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.5s ease;">
+                            <img src="SS3_Product Details.png" alt="Image 1" style="max-width: 100%; max-height: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);">
                         </div>
-                    <div class="image-box">
-                        <img src="web_traffic.png" alt="A seller working in a modern processing facility">
+                        <div class="carousel-image" data-index="1" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.5s ease;">
+                            <img src="web_traffic.png" alt="Image 2" style="max-width: 100%; max-height: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);">
+                        </div>
+                        
+                        <button class="carousel-nav carousel-prev" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(59, 130, 246, 0.8); border: none; color: white; padding: 15px 20px; border-radius: 50%; font-size: 20px; transition: all 0.3s ease; z-index: 10;">‹</button>
+                        <button class="carousel-nav carousel-next" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(59, 130, 246, 0.8); border: none; color: white; padding: 15px 20px; border-radius: 50%; font-size: 20px; transition: all 0.3s ease; z-index: 10;">›</button>
+                    </div>
+                    
+                    <div class="carousel-dots" style="text-align: center; margin-top: 20px;">
+                        <span class="dot active" style="height: 12px; width: 12px; margin: 0 5px; background-color: #3b82f6; border-radius: 50%; display: inline-block; transition: all 0.3s ease;"></span>
+                        <span class="dot" style="height: 12px; width: 12px; margin: 0 5px; background-color: rgba(59, 130, 246, 0.3); border-radius: 50%; display: inline-block; transition: all 0.3s ease;"></span>
                         </div>
                 </div>
             </div>
         </div>
-        
+
 
         <div class="slide">    
             <div class="slide-content">
