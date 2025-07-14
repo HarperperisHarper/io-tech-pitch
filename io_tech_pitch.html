@@ -16,7 +16,15 @@
             background: #030712;
             color: #ffffff;
             overflow: hidden;
+        }
+
+        /* Custom cursor styles */
+        body * {
             cursor: none;
+        }
+
+        button, .nav-btn, .carousel-nav, .dot, .carousel-image img {
+            cursor: pointer !important;
         }
 
         .custom-cursor {
@@ -26,7 +34,7 @@
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
-            z-index: 9999;
+            z-index: 99999;
             transition: all 0.1s ease;
             mix-blend-mode: difference;
         }
@@ -59,18 +67,17 @@
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transform: translateX(100%) scale(0.9);
-            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            /* ✅ FIX: Simplified transition for stability */
+            transition: opacity 0.6s ease-in-out;
             padding: 60px;
+            /* ✅ FIX: Ensure non-active slides cannot be interacted with */
+            pointer-events: none;
         }
 
         .slide.active {
             opacity: 1;
-            transform: translateX(0) scale(1);
-        }
-
-        .slide.prev {
-            transform: translateX(-100%) scale(0.9);
+            /* ✅ FIX: Ensure active slide is interactive */
+            pointer-events: auto;
         }
 
         .slide-content {
@@ -344,7 +351,7 @@
 
         .modules-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(1, 1fr);
             gap: 1rem;
         }
 
@@ -433,10 +440,11 @@
             color: white;
             padding: 0.8rem 1.5rem;
             border-radius: 25px;
-            cursor: none;
             transition: all 0.3s ease;
             font-size: 1rem;
             font-weight: 500;
+            position: relative;
+            z-index: 101;
         }
 
         .nav-btn:hover {
@@ -498,66 +506,33 @@
             height: auto;
             filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
         }
-
-        .pricing-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .pricing-card {
-            background: linear-gradient(135deg, rgba(30, 58, 138, 0.2), rgba(30, 58, 138, 0.1));
-            border-radius: 24px;
-            padding: 2.5rem;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            transition: all 0.3s ease;
+        
+        /* Carousel specific styles */
+        .carousel-nav {
             position: relative;
+            z-index: 20;
         }
-
-        .pricing-card.featured {
-            border-color: rgba(59, 130, 246, 0.5);
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+        
+        .carousel-nav:hover {
+            background: rgba(59, 130, 246, 1) !important;
+            transform: translateY(-50%) scale(1.1);
         }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(59, 130, 246, 0.4);
+        
+        .carousel-image {
+            pointer-events: none; /* Let clicks pass through the container div */
         }
-
-        .price {
-            font-size: 3rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #3b82f6, #60a5fa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 1rem 0;
+        
+        .carousel-image img {
+            pointer-events: auto; /* Make ONLY the actual image clickable */
         }
-
-        .price-period {
-            font-size: 1rem;
-            color: #94a3b8;
+        
+        .dot {
+            position: relative;
+            z-index: 20;
         }
-
-        .feature-list {
-            list-style: none;
-            margin: 2rem 0;
-        }
-
-        .feature-list li {
-            padding: 0.8rem 0;
-            color: #cbd5e1;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .feature-list li::before {
-            content: '✓';
-            color: #3b82f6;
-            font-weight: bold;
-            font-size: 1.2rem;
+        
+        .dot:hover {
+            background-color: #3b82f6 !important;
         }
 
         @media (max-width: 768px) {
@@ -566,8 +541,7 @@
             }
             
             .features-grid,
-            .metrics-container,
-            .pricing-cards {
+            .metrics-container {
                 grid-template-columns: 1fr;
             }
             
@@ -592,7 +566,6 @@
             <span id="current-slide">1</span> / <span id="total-slides">9</span>
         </div>
 
-        <!-- Slide 1: Title -->
         <div class="slide active">
             <div class="slide-content">
                 <div class="ai-badge">AI-Powered ERP Revolution</div>
@@ -606,7 +579,6 @@
             </div>
         </div>
 
-        <!-- Slide 2: The Transformation Story -->
         <div class="slide">
             <div class="slide-content">
                 <h2>Our Transformation Journey</h2>
@@ -614,54 +586,26 @@
                 <div class="transformation-visual">
                     <div class="monolith-box">
                         <h3>Traditional ERP</h3>
-                        <p>All-in-one system</p>
                         <ul>
-                            <li>Complex</li>
-                            <li>Inflexible</li>
-                            <li>Incustomizable</li>
-                            <li>Inscalable</li>
+                            <li>Not Industry-relevant</li>
+                            <li>Low Customization</li>
+                            <li>Slow Turnaround Time on New Technology</li>
                         </ul>
                     </div>
                     <div class="arrow-transform">→</div>
                     <div class="modules-grid">
-                        <div class="module-box" style="--delay: 1">AI RFQ</div>
-                        <div class="module-box" style="--delay: 2">AI Matchmaking</div>
-                        <div class="module-box" style="--delay: 3">AI Inventory</div>
-                        <div class="module-box" style="--delay: 4">More Modules</div>
+                        <div class="module-box" style="--delay: 1">Intelligent Analysis On Product Sales</div>
+                        <div class="module-box" style="--delay: 2">AI-Powered RFQ Engine</div>
+                        <div class="module-box" style="--delay: 3">AI-Driven Prospect Matchmaking</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 3: The Problem We Solve -->
-        <div class="slide">
-            <div class="slide-content">
-                <h2>The Challenge Sellers Face Today</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">📋</div>
-                        <h3>Manual RFQ Processing</h3>
-                        <p>Hours spent on repetitive quotation tasks</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3>Poor Lead Qualification</h3>
-                        <p>Wasting time on low-quality prospects</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📦</div>
-                        <h3>Inventory Inefficiencies</h3>
-                        <p>Stockouts and overstock situations</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 4: AI-Enhanced RFQ Module -->
         <div class="slide">
             <div class="slide-content">
                 <div class="ai-badge">Module Spotlight</div>
-                <h2>AI-Enhanced RFQ System</h2>
+                <h2>AI-Powered RFQ Engine</h2>
                 <p>Transform your quotation process with intelligent automation</p>
                 <div class="features-grid">
                     <div class="feature-card">
@@ -672,22 +616,51 @@
                     <div class="feature-card">
                         <div class="feature-icon">⚡</div>
                         <h3>90% Faster Processing</h3>
-                        <p>From hours to minutes with automated workflows</p>
+                        <p>From weeks to minutes with automated workflows</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">📈</div>
                         <h3>AI Powered Matchmaking</h3>
-                        <p>Powerful AI-model supported product portfolio</p>
+                        <p>Powerful AI-model supported by 20K+ complete customer portfolio</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 5: AI Matchmaking Module -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="ai-badge">Visual Overview</div>
+                <h2>AI-Powered RFQ Engine Demo</h2>
+                
+                <div class="image-carousel-container" style="margin-top: 3rem; position: relative; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    <div class="carousel-wrapper" style="position: relative; height: 450px; overflow: hidden; border-radius: 20px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.1)); padding: 20px;">
+                        <div class="carousel-image active" data-index="0" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.5s ease;">
+                            <img src="image (8).png" alt="Image 1" style="max-width: 100%; max-height: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);">
+                        </div>
+                        <div class="carousel-image" data-index="1" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.5s ease;">
+                            <img src="image (9).png" alt="Image 2" style="max-width: 100%; max-height: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);">
+                        </div>
+                        <div class="carousel-image" data-index="2" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.5s ease;">
+                            <img src="image (10).png" alt="Image 3" style="max-width: 100%; max-height: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);">
+                        </div>
+                        
+                        <button class="carousel-nav carousel-prev" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(59, 130, 246, 0.8); border: none; color: white; padding: 15px 20px; border-radius: 50%; font-size: 20px; transition: all 0.3s ease; z-index: 10;">‹</button>
+                        <button class="carousel-nav carousel-next" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(59, 130, 246, 0.8); border: none; color: white; padding: 15px 20px; border-radius: 50%; font-size: 20px; transition: all 0.3s ease; z-index: 10;">›</button>
+                    </div>
+                    
+                    <div class="carousel-dots" style="text-align: center; margin-top: 20px;">
+                        <span class="dot active" style="height: 12px; width: 12px; margin: 0 5px; background-color: #3b82f6; border-radius: 50%; display: inline-block; transition: all 0.3s ease;"></span>
+                        <span class="dot" style="height: 12px; width: 12px; margin: 0 5px; background-color: rgba(59, 130, 246, 0.3); border-radius: 50%; display: inline-block; transition: all 0.3s ease;"></span>
+                        <span class="dot" style="height: 12px; width: 12px; margin: 0 5px; background-color: rgba(59, 130, 246, 0.3); border-radius: 50%; display: inline-block; transition: all 0.3s ease;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="slide">
             <div class="slide-content">
                 <div class="ai-badge">Module Spotlight</div>
-                <h2>AI-Powered Matchmaking</h2>
+                <h2>AI-Driven Prospect Matchmaking</h2>
                 <p>Connect buyers and sellers with unprecedented precision</p>
                 <div class="features-grid">
                     <div class="feature-card">
@@ -697,45 +670,90 @@
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🤝</div>
-                        <h3>95% Match Accuracy</h3>
+                        <h3>High Match Accuracy</h3>
                         <p>Advanced ML models ensure high-quality business connections</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🌐</div>
-                        <h3>Global Network Access</h3>
-                        <p>Connect with verified suppliers and buyers worldwide instantly</p>
+                        <h3>100K+ Global Network Access</h3>
+                        <p>Access complete portfolio from verified suppliers and buyers worldwide instantly</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 6: AI Inventory Management Module -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="ai-badge">Visual Overview</div>
+                <h2>AI-Driven Prospect Matchmaking Demo</h2>
+                <div style="text-align: center; margin-top: 3rem; position: relative;">
+                    <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.1)); padding: 2rem; border-radius: 24px; display: inline-block;">
+                        <img src="https://bronze-bernice-84.tiiny.site/image-11.png" 
+                             alt="Description of your image" 
+                             style="max-width: 100%; 
+                                    max-height: 450px; 
+                                    height: auto; 
+                                    border-radius: 1px; 
+                                    box-shadow: 0 10px 10px rgba(59, 130, 246, 0.3);
+                                    border: 1px solid rgba(59, 130, 246, 0.2);">
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="slide">
             <div class="slide-content">
                 <div class="ai-badge">Module Spotlight</div>
-                <h2>AI-Powered Inventory Management</h2>
-                <p>Predictive analytics for optimal stock levels</p>
+                <h2>Business Intelligence Initiatives</h2>
+                <p>Predictive analytics for product, inventory, and pricing strategy</p>
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">📊</div>
-                        <h3>Demand Forecasting</h3>
-                        <p>ML algorithms predict future demand with 92% accuracy</p>
+                        <h3>Product Demand</h3>
+                        <p>ML algorithms predict future demand based on historical transactions and real-time consumer market trend</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🔄</div>
-                        <h3>Auto-Reordering</h3>
-                        <p>Intelligent PO generation based on predictive models</p>
+                        <h3>Cost Optimization</h3>
+                        <p>Reduce carrying costs through inventory control</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">💰</div>
-                        <h3>Cost Optimization</h3>
-                        <p>Reduce carrying costs by up to 35%</p>
+                        <h3>Strategic Tiered Pricing</h3>
+                        <p>Intelligent predictive models based on market trend and competitors activity</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 7: Market Opportunity -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="ai-badge">Visual Overview</div>
+                <h2>Business Intelligence Initiatives Demo</h2>
+                
+                <div class="image-carousel-container" style="margin-top: 3rem; position: relative; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    <div class="carousel-wrapper" style="position: relative; height: 450px; overflow: hidden; border-radius: 20px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.1)); padding: 20px;">
+                        <div class="carousel-image active" data-index="0" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.5s ease;">
+                            <img src="SS3_Product Details.png" alt="Image 1" style="max-width: 100%; max-height: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);">
+                        </div>
+                        <div class="carousel-image" data-index="1" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.5s ease;">
+                            <img src="web_traffic.png" alt="Image 2" style="max-width: 100%; max-height: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);">
+                        </div>
+
+                        
+                        <button class="carousel-nav carousel-prev" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(59, 130, 246, 0.8); border: none; color: white; padding: 15px 20px; border-radius: 50%; font-size: 20px; transition: all 0.3s ease; z-index: 10;">‹</button>
+                        <button class="carousel-nav carousel-next" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(59, 130, 246, 0.8); border: none; color: white; padding: 15px 20px; border-radius: 50%; font-size: 20px; transition: all 0.3s ease; z-index: 10;">›</button>
+                    </div>
+                    
+                    <div class="carousel-dots" style="text-align: center; margin-top: 20px;">
+                        <span class="dot active" style="height: 12px; width: 12px; margin: 0 5px; background-color: #3b82f6; border-radius: 50%; display: inline-block; transition: all 0.3s ease;"></span>
+                        <span class="dot" style="height: 12px; width: 12px; margin: 0 5px; background-color: rgba(59, 130, 246, 0.3); border-radius: 50%; display: inline-block; transition: all 0.3s ease;"></span>
+                        <span class="dot" style="height: 12px; width: 12px; margin: 0 5px; background-color: rgba(59, 130, 246, 0.3); border-radius: 50%; display: inline-block; transition: all 0.3s ease;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="slide">
             <div class="slide-content">
                 <h2>Massive Market Opportunity</h2>
@@ -761,156 +779,190 @@
             </div>
         </div>
 
-        <!-- Slide 8: Why Choose Us -->
         <div class="slide">
             <div class="slide-content">
-                <h2>Why Leading Sellers Choose Our AI Modules</h2>
+                <h2>Why Sellers Choose Our AI Modules</h2>
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">🏗️</div>
                         <h3>Built by Industry Experts</h3>
                         <p>Years of ERP experience distilled into focused AI solutions</p>
+                        <p>Plus 30 years in Logistics</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🔌</div>
-                        <h3>Easy Integration</h3>
+                        <h3>Scalable Integration</h3>
                         <p>Works with your existing systems via robust APIs</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">📈</div>
-                        <h3>Proven ROI</h3>
+                        <h3>Trusted by Leading Sellers</h3>
                         <p>Average 300% ROI within 6 months</p>
+                        <p>High user experience satisfaction</p>
                     </div>
                 </div>
                 <div class="metrics-container" style="margin-top: 3rem;">
                     <div class="metric">
                         <div class="metric-value">70K+</div>
-                        <p>Active Users</p>
+                        <p>Active Buyer Users</p>
                     </div>
                     <div class="metric">
                         <div class="metric-value">10K+</div>
-                        <p>RFQ&Sourcing Processed</p>
+                        <p>RFQ Processed</p>
                     </div>
                     <div class="metric">
-                        <div class="metric-value">98%</div>
-                        <p>Customer Satisfaction</p>
+                        <div class="metric-value">200K+</div>
+                        <p>Online Orders</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 9: Call to Action -->
         <div class="slide">
             <div class="slide-content">
-                <h1>Join the AI Business Revolution</h1>
+                <h1>Join the <span style="color: #72BF44; background: none; -webkit-text-fill-color: initial;">IO</span> Business Revolution</h1>
             </div>
         </div>
 
-        <!-- Navigation -->
         <div class="navigation">
-            <button class="nav-btn" onclick="previousSlide()">← Previous</button>
-            <button class="nav-btn" onclick="nextSlide()">Next →</button>
+            <button class="nav-btn" id="prevBtn">← Previous</button>
+            <button class="nav-btn" id="nextBtn">Next →</button>
         </div>
     </div>
 
     <script>
-        // Create AI particles
-        const particlesContainer = document.querySelector('.ai-particles');
-        for (let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'ai-particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 20 + 's';
-            particle.style.animationDuration = 15 + Math.random() * 10 + 's';
-            particlesContainer.appendChild(particle);
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Global Variables ---
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            let currentSlide = 0;
 
-        // Custom cursor
-        const cursor = document.querySelector('.custom-cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX - 12 + 'px';
-            cursor.style.top = e.clientY - 12 + 'px';
-        });
+            const particlesContainer = document.querySelector('.ai-particles');
+            const cursor = document.querySelector('.custom-cursor');
 
-        // Mouse hover effect on feature cards
-        document.querySelectorAll('.feature-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = ((e.clientX - rect.left) / rect.width) * 100;
-                const y = ((e.clientY - rect.top) / rect.height) * 100;
-                card.style.setProperty('--mouse-x', x + '%');
-                card.style.setProperty('--mouse-y', y + '%');
-            });
-        });
+            // --- Slide Navigation ---
+            function updateSlideIndicator() {
+                document.getElementById('current-slide').textContent = currentSlide + 1;
+                document.getElementById('total-slides').textContent = totalSlides;
+            }
 
-        // Slide navigation
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
-        document.getElementById('total-slides').textContent = totalSlides;
+            // ✅ FIX: Replaced buggy animation logic with a simple, stable fade transition.
+            function showSlide(newIndex) {
+                // Hide the old slide
+                slides[currentSlide].classList.remove('active');
+                
+                // Update current slide index
+                currentSlide = (newIndex + totalSlides) % totalSlides;
+                
+                // Show the new slide
+                slides[currentSlide].classList.add('active');
+                
+                updateSlideIndicator();
 
-        function showSlide(n) {
-            slides[currentSlide].classList.remove('active');
-            slides[currentSlide].classList.add('prev');
+                // Reset animations for metrics on the new slide
+                const activeSlide = slides[currentSlide];
+                if (activeSlide.querySelector('.metric')) {
+                    activeSlide.querySelectorAll('.metric').forEach(metric => {
+                        metric.style.animation = 'none';
+                        setTimeout(() => {
+                           metric.style.animation = '';
+                        }, 10);
+                    });
+                }
+            }
             
-            currentSlide = (n + totalSlides) % totalSlides;
-            
-            slides[currentSlide].classList.remove('prev');
-            slides[currentSlide].classList.add('active');
-            
-            document.getElementById('current-slide').textContent = currentSlide + 1;
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
 
-            // Reset animations for metrics
-            if (slides[currentSlide].querySelector('.metric')) {
-                slides[currentSlide].querySelectorAll('.metric').forEach((metric, index) => {
-                    metric.style.animation = 'none';
-                    setTimeout(() => {
-                        metric.style.animation = null;
-                    }, index * 100);
+            function previousSlide() {
+                showSlide(currentSlide - 1);
+            }
+
+            // --- Carousel Logic ---
+            let currentCarouselImage = 0;
+            const carouselImages = document.querySelectorAll('.carousel-image');
+            const carouselDots = document.querySelectorAll('.dot');
+            const totalCarouselImages = carouselImages.length;
+
+            function showCarouselImage(index) {
+                currentCarouselImage = (index + totalCarouselImages) % totalCarouselImages;
+
+                carouselImages.forEach((img, i) => {
+                    img.style.opacity = i === currentCarouselImage ? '1' : '0';
+                });
+                
+                carouselDots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentCarouselImage);
+                    dot.style.backgroundColor = i === currentCarouselImage ? '#3b82f6' : 'rgba(59, 130, 246, 0.3)';
                 });
             }
-        }
 
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
+            // --- Event Listeners ---
+            function setupEventListeners() {
+                // Main Navigation
+                document.getElementById('prevBtn').addEventListener('click', previousSlide);
+                document.getElementById('nextBtn').addEventListener('click', nextSlide);
 
-        function previousSlide() {
-            showSlide(currentSlide - 1);
-        }
+                // Keyboard Navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight') nextSlide();
+                    if (e.key === 'ArrowLeft') previousSlide();
+                });
 
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') nextSlide();
-            if (e.key === 'ArrowLeft') previousSlide();
-        });
+                // Carousel Navigation
+                document.querySelector('.carousel-prev').addEventListener('click', () => showCarouselImage(currentCarouselImage - 1));
+                document.querySelector('.carousel-next').addEventListener('click', () => showCarouselImage(currentCarouselImage + 1));
+                
+                carouselDots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => showCarouselImage(index));
+                });
 
-        // Touch support
-        let touchStartX = 0;
-        let touchEndX = 0;
+                document.querySelectorAll('.carousel-image img').forEach((img) => {
+                    img.addEventListener('click', () => showCarouselImage(currentCarouselImage + 1));
+                });
+                
+                // Mouse/Cursor Effects
+                document.addEventListener('mousemove', (e) => {
+                    cursor.style.left = e.clientX - 12 + 'px';
+                    cursor.style.top = e.clientY - 12 + 'px';
+                });
 
-        document.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
+                document.querySelectorAll('.feature-card').forEach(card => {
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = ((e.clientX - rect.left) / rect.width) * 100;
+                        const y = ((e.clientY - rect.top) / rect.height) * 100;
+                        card.style.setProperty('--mouse-x', x + '%');
+                        card.style.setProperty('--mouse-y', y + '%');
+                    });
+                });
+            }
 
-        document.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
+            // --- Initializations ---
+            function init() {
+                // Create particles
+                for (let i = 0; i < 50; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'ai-particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 20 + 's';
+                    particle.style.animationDuration = 15 + Math.random() * 10 + 's';
+                    particlesContainer.appendChild(particle);
+                }
 
-        function handleSwipe() {
-            if (touchEndX < touchStartX - 50) nextSlide();
-            if (touchEndX > touchStartX + 50) previousSlide();
-        }
+                // Auto-play carousel
+                setInterval(() => {
+                    if (slides[4].classList.contains('active')) { // Only advance if carousel slide is active
+                        showCarouselImage(currentCarouselImage + 1);
+                    }
+                }, 5000);
 
-        // Click on buttons hover effect
-        document.querySelectorAll('.nav-btn, .cta-button').forEach(btn => {
-            btn.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'scale(1.5)';
-            });
-            btn.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'scale(1)';
-            });
+                updateSlideIndicator();
+                setupEventListeners();
+            }
+
+            init();
         });
     </script>
 </body>
