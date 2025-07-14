@@ -476,24 +476,24 @@
         }
         
         /* ✅ NEW CURSOR STYLES */
-        body {
-            cursor: default; /* Use the default cursor on the body */
+
+        body * {
+            cursor: none;
         }
         
-        button, a, .feature-card, .image-box, .metric, .carousel__slide img {
-            cursor: none; /* Hide the default cursor ONLY on interactive elements */
-        }
         
         .custom-cursor {
-            opacity: 0; /* Hidden by default */
-            transform: scale(0);
-            transition: transform 0.3s ease, opacity 0.3s ease;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 99999;
+            mix-blend-mode: difference;
         }
         
-        .custom-cursor.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
+
         
         /* ✅ NEW REUSABLE CAROUSEL MODULE STYLES */
         .carousel {
@@ -1169,15 +1169,7 @@
                     customCursor.style.top = e.clientY + 'px';
                 });
         
-                // Custom cursor visibility logic
-                const interactiveElements = document.querySelectorAll(
-                    'button, a, .feature-card, .image-box, .metric, .carousel__slide img'
-                );
-        
-                interactiveElements.forEach(el => {
-                    el.addEventListener('mouseenter', () => customCursor.classList.add('visible'));
-                    el.addEventListener('mouseleave', () => customCursor.classList.remove('visible'));
-                });
+               
             }
         
             function init() {
